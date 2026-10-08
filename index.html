@@ -1,0 +1,434 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Progetto operativo Kiber–IRT</title><style>
+:root{--ink:#183047;--muted:#58697a;--accent:#007d87;--line:#d9e3e9;--paper:#fff;--bg:#eef3f6}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}body{margin:0;font:17px/1.7 "Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--bg)}
+header{position:sticky;top:0;z-index:10;background:#183047;color:white;padding:12px 30px;display:flex;justify-content:space-between;align-items:center;gap:15px}header span{font-size:14px;letter-spacing:.03em}button{background:#fff;color:var(--ink);border:0;border-radius:6px;padding:9px 13px;cursor:pointer;font:inherit;font-size:14px}
+.layout{max-width:1550px;margin:auto;display:grid;grid-template-columns:270px minmax(0,1fr);gap:32px;padding:35px 30px 70px}aside{position:sticky;top:90px;align-self:start;max-height:calc(100vh - 120px);overflow:auto;font-size:14px}aside strong{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}aside ul{list-style:none;padding:0}aside li{margin:9px 0}aside ul ul{padding-left:13px;font-size:13px}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+main{min-width:0;background:var(--paper);padding:48px 55px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #18304708}h1{font-size:38px;line-height:1.2;letter-spacing:-.025em;margin:0 0 20px}h2{font-size:26px;line-height:1.35;border-top:1px solid var(--line);padding-top:35px;margin-top:45px}h3{font-size:20px;margin-top:28px}p{margin:14px 0}main>p:first-of-type{font-size:14px;color:var(--muted);padding-bottom:22px;border-bottom:3px solid var(--accent)}li{margin:9px 0}strong{font-weight:650}code{background:#edf3f5;border-radius:4px;padding:2px 5px;font-size:.9em}table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.55;margin:24px 0;display:block;overflow:auto}th{background:#183047;color:white;text-align:left;font-weight:600}th,td{padding:13px 15px;border:1px solid var(--line);vertical-align:top}tbody tr:nth-child(even){background:#f5f8fa}
+.diagram{margin:25px 0;padding:26px;background:#f5f9fb;border:1px solid var(--line);border-radius:10px;text-align:center}.node{border:1px solid #b8cbd7;border-radius:8px;background:white;padding:15px;font-weight:600}.node small{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:5px}.irt{background:#e7f5f4;border-color:#87bfbe}.gateway{background:#ecf1fc;border-color:#a5b7d8}.arrow{font-size:13px;color:var(--muted);padding:10px}.clients{display:grid;grid-template-columns:1fr 1fr;gap:15px}.media{margin:12px 0;background:#183047;color:white;border-radius:8px;padding:12px;font-size:14px}figcaption{font-size:12px;color:var(--muted);margin-top:18px;text-align:left}
+footer{font-size:12px;color:var(--muted);margin-top:40px;border-top:1px solid var(--line);padding-top:15px}
+@media(max-width:1050px){.layout{grid-template-columns:1fr;max-width:1100px}aside{position:static;max-height:none}aside .toc>ul{columns:2}aside .toc ul ul{display:none}main{padding:35px}}
+@media(max-width:600px){body{font-size:16px}.layout{padding:15px;gap:15px}main{padding:25px 20px}h1{font-size:29px}h2{font-size:23px}header{padding:10px 15px}aside .toc>ul{columns:1}.clients{grid-template-columns:1fr}.diagram{padding:14px}}
+@media print{header,aside{display:none}.layout{display:block;padding:0;max-width:none}main{padding:0;border:0;box-shadow:none}body{background:white;font-size:11pt}h1{font-size:25pt}h2{font-size:17pt;break-after:avoid}h3{break-after:avoid}table{display:table;font-size:9pt}tr,.diagram{break-inside:avoid}a{color:inherit}.diagram{padding:12px}h2{margin-top:25px;padding-top:15px}@page{size:A4;margin:18mm}}
+</style></head><body><header><span>KIBER / IRT · PROPOSTA OPERATIVA</span><div><button onclick="document.documentElement.requestFullscreen?.()">Schermo intero</button> <button onclick="window.print()">Stampa / PDF</button></div></header><div class="layout"><aside><strong>Indice del documento</strong><div class="toc">
+<ul>
+<li><a href="#kiber-e-irt-flusso-di-lavoro-e-punti-da-risolvere">Kiber e IRT: flusso di lavoro e punti da risolvere</a><ul>
+<li><a href="#il-flusso-di-lavoro">Il flusso di lavoro</a><ul>
+<li><a href="#1-viene-prenotata-una-prestazione-da-svolgere-con-kiber">1. Viene prenotata una prestazione da svolgere con Kiber</a></li>
+<li><a href="#2-il-backend-controlla-le-associazioni-e-prepara-la-sessione-kiber">2. Il backend controlla le associazioni e prepara la sessione Kiber</a></li>
+<li><a href="#3-il-medico-trova-lappuntamento-in-irt-e-apre-kiber-connect-webapp">3. Il medico trova l'appuntamento in IRT e apre Kiber Connect Webapp</a></li>
+<li><a href="#4-il-medico-entra-nella-sessione-e-attende-il-paziente">4. Il medico entra nella sessione e attende il paziente</a></li>
+<li><a href="#5-il-paziente-accede-a-kiber-assistant-e-si-identifica">5. Il paziente accede a Kiber Assistant e si identifica</a></li>
+<li><a href="#6-il-paziente-seleziona-lappuntamento-ed-entra-nella-chiamata">6. Il paziente seleziona l'appuntamento ed entra nella chiamata</a></li>
+<li><a href="#7-la-videochiamata-si-svolge-e-kiber-raccoglie-i-dati">7. La videochiamata si svolge e Kiber raccoglie i dati</a></li>
+<li><a href="#8-il-paziente-esce-e-il-medico-conferma-il-risultato">8. Il paziente esce e il medico conferma il risultato</a></li>
+<li><a href="#9-il-backend-invia-i-dati-alla-irt-e-mostra-lesito">9. Il backend invia i dati alla IRT e mostra l'esito</a></li>
+</ul>
+</li>
+<li><a href="#lista-operativa-operazioni-lato-kiber">Lista operativa operazioni lato Kiber</a><ul>
+<li><a href="#1-preparare-lintegrazione-nei-client-kiber">1. Preparare l'integrazione nei client Kiber</a></li>
+<li><a href="#2-ricevere-prenotazioni-modifiche-e-cancellazioni">2. Ricevere prenotazioni, modifiche e cancellazioni</a></li>
+<li><a href="#3-controllare-le-associazioni-acs-e-preparare-la-sessione">3. Controllare le associazioni ACS e preparare la sessione</a></li>
+<li><a href="#4-aprire-kiber-connect-webapp-dal-pulsante-irt">4. Aprire Kiber Connect Webapp dal pulsante IRT</a></li>
+<li><a href="#5-identificare-il-paziente-e-alimentare-il-calendario-di-assistant">5. Identificare il paziente e alimentare il calendario di Assistant</a></li>
+<li><a href="#6-mantenere-sala-dattesa-e-ammissione-del-medico">6. Mantenere sala d'attesa e ammissione del medico</a></li>
+<li><a href="#7-raccogliere-i-dati-della-chiamata">7. Raccogliere i dati della chiamata</a></li>
+<li><a href="#8-preparare-riepilogo-conferma-e-report-kiber">8. Preparare riepilogo, conferma e report Kiber</a></li>
+<li><a href="#9-inviare-il-risultato-e-mostrare-il-suo-stato">9. Inviare il risultato e mostrare il suo stato</a></li>
+<li><a href="#10-collaudare-lintero-percorso">10. Collaudare l'intero percorso</a></li>
+</ul>
+</li>
+<li><a href="#lista-quesiti-per-referenti-irt">Lista quesiti per referenti IRT</a><ul>
+<li><a href="#1-il-percorso-proposto-e-utilizzabile-nella-nostra-integrazione">1. Il percorso proposto è utilizzabile nella nostra integrazione?</a></li>
+<li><a href="#2-come-viene-prenotata-e-assegnata-a-kiber-la-prestazione">2. Come viene prenotata e assegnata a Kiber la prestazione?</a></li>
+<li><a href="#3-possiamo-ricevere-i-messaggi-documentati-per-gli-appuntamenti">3. Possiamo ricevere i messaggi documentati per gli appuntamenti?</a></li>
+<li><a href="#4-quali-dati-riceviamo-per-preparare-sessione-e-calendario">4. Quali dati riceviamo per preparare sessione e calendario?</a></li>
+<li><a href="#5-dove-viene-presentato-il-pulsante-vai-alla-call">5. Dove viene presentato il pulsante “Vai alla call”?</a></li>
+<li><a href="#6-come-associamo-il-link-kiber-allappuntamento">6. Come associamo il link Kiber all'appuntamento?</a></li>
+<li><a href="#7-come-riceviamo-la-verifica-dellaccesso-del-medico">7. Come riceviamo la verifica dell'accesso del medico?</a></li>
+<li><a href="#8-come-si-identifica-il-paziente-in-kiber-assistant">8. Come si identifica il paziente in Kiber Assistant?</a></li>
+<li><a href="#9-quali-regole-si-applicano-ad-anticipo-ritardi-e-assenze">9. Quali regole si applicano ad anticipo, ritardi e assenze?</a></li>
+<li><a href="#10-quali-dati-raccogliamo-e-come-calcoliamo-i-tempi">10. Quali dati raccogliamo e come calcoliamo i tempi?</a></li>
+<li><a href="#11-come-inviamo-il-report-kiber-e-leventuale-referto">11. Come inviamo il report Kiber e l'eventuale referto?</a></li>
+<li><a href="#12-quale-contratto-di-scambio-dobbiamo-implementare">12. Quale contratto di scambio dobbiamo implementare?</a></li>
+<li><a href="#13-come-ci-colleghiamo-ai-servizi-di-test-e-produzione">13. Come ci colleghiamo ai servizi di test e produzione?</a></li>
+<li><a href="#14-quando-il-risultato-e-acquisito-e-la-prestazione-e-chiusa">14. Quando il risultato è acquisito e la prestazione è chiusa?</a></li>
+<li><a href="#15-come-gestiamo-invii-incerti-errori-e-correzioni">15. Come gestiamo invii incerti, errori e correzioni?</a></li>
+<li><a href="#16-come-organizziamo-il-collaudo-e-il-passaggio-in-esercizio">16. Come organizziamo il collaudo e il passaggio in esercizio?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</aside><main><h1 id="kiber-e-irt-flusso-di-lavoro-e-punti-da-risolvere">Kiber e IRT: flusso di lavoro e punti da risolvere</h1>
+<p>Proposta per la sanità pubblica · 7 ottobre 2026</p>
+<p>Kiber verrà modificato per consentire di scegliere fra un percorso <strong>“Privato”</strong>, che usa Microsoft Entra per l'accesso e i servizi Microsoft per calendario e riunioni, e un percorso <strong>“Pubblico”</strong>, che si integra con IRT.</p>
+<p><strong>Tutto ciò che segue si riferisce al percorso “Pubblico”.</strong> Questo documento descrive il funzionamento che proponiamo: alcuni passaggi sono già supportati dai materiali ricevuti; altri devono essere concordati con i referenti IRT.</p>
+<h2 id="il-flusso-di-lavoro">Il flusso di lavoro</h2>
+<p>I riferimenti qui sotto rimandano alle pagine della <strong>Guida di integrazione FHIR</strong> v0.1.8 (di seguito <strong>GUIDA FHIR</strong>) e, ove necessario, alla guida <strong>IRT - Integrazione con Cartella Clinica Elettronica esterna</strong> (di seguito <strong>GUIDA ICCE</strong>). “Copertura parziale” significa che la guida tratta l’argomento, ma non conferma tutto il passaggio proposto. “Non coperto” indica che occorre un’altra specifica o una scelta Kiber. Le guide sono richiamate per titolo e nome del file; non sono incluse in questa pagina.</p>
+<h3 id="1-viene-prenotata-una-prestazione-da-svolgere-con-kiber">1. Viene prenotata una prestazione da svolgere con Kiber</h3>
+<p>La prenotazione identifica paziente, data e ora e viene assegnata a Kiber per l'erogazione. Il sistema responsabile — IRT, CUP o il relativo sistema di integrazione, secondo il flusso da confermare — comunica l'appuntamento al backend Kiber, cioè il nostro servizio centrale, che lo registra e lo collega alla prestazione regionale. In questo modo Kiber conosce la visita prima che inizi.</p>
+<p>La guida documenta già i seguenti eventi e i relativi messaggi FHIR. Un <strong>Bundle AMB</strong> è un contenitore di dati FHIR relativo all'ambito ambulatoriale: in questo caso trasporta le informazioni sul piano di lavoro e sulla prenotazione.</p>
+<table>
+<thead>
+<tr>
+<th>Cosa succede</th>
+<th>Evento documentato</th>
+<th>Messaggio di esempio nella GUIDA FHIR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nuova prenotazione</td>
+<td><code>SIU_INS</code></td>
+<td>Bundle AMB inserimento piano di lavoro</td>
+</tr>
+<tr>
+<td>Modifica della prenotazione</td>
+<td><code>SIU_UPD</code></td>
+<td>Bundle AMB variazione piano di lavoro</td>
+</tr>
+<tr>
+<td>Spostamento della data dell'appuntamento</td>
+<td><code>SIU_RPD</code></td>
+<td>Bundle AMB spostamento piano di lavoro</td>
+</tr>
+<tr>
+<td>Cancellazione della prenotazione</td>
+<td><code>SIU_DEL</code></td>
+<td>Bundle AMB cancellazione piano di lavoro</td>
+</tr>
+</tbody>
+</table>
+<p>I link nella tabella aprono i singoli file HTML della guida. Tutti si trovano nella cartella <code>Eng-FHIR-Profile-IRT@v.0.1.8</code> della GUIDA FHIR. I nomi esatti sono:</p>
+<ul>
+<li><code>SIU_INS</code>: <code>Home-Esempi-Integrazione-CUP-Regionale-Bundle-AMB-inserimento-piano-di-lavoro.html</code>.</li>
+<li><code>SIU_UPD</code>: <code>Home-Esempi-Integrazione-CUP-Regionale-Bundle-AMB-variazione-piano-di-lavoro.html</code>.</li>
+<li><code>SIU_RPD</code>: <code>Home-Esempi-Integrazione-CUP-Regionale-Bundle-AMB-spostamento-piano-di-lavoro.html</code>.</li>
+<li><code>SIU_DEL</code>: <code>Home-Esempi-Integrazione-CUP-Regionale-Bundle-AMB-cancellazione-piano-di-lavoro.html</code>.</li>
+</ul>
+<p>L'ipotesi è ricevere un messaggio per la nuova prenotazione e messaggi successivi per i suoi aggiornamenti. Non serve necessariamente una connessione sempre aperta per ogni appuntamento: serve che le comunicazioni continuino a riferirsi alla stessa prestazione e raggiungano il nostro servizio. Gli esempi descrivono il modello CUP/IRT; il loro invio verso Kiber deve essere confermato.</p>
+<p><strong>Da chiarire con IRT:</strong></p>
+<ul>
+<li><strong>Come viene prenotata una prestazione da svolgere con Kiber?</strong> Il medico la crea direttamente nella IRT oppure la prenotazione arriva dal CUP? In quale passaggio viene indicato che sarà erogata tramite Kiber, e quale sistema comunica l'appuntamento al nostro backend?</li>
+<li><strong>Disponibilità dei messaggi:</strong> gli eventi <code>SIU_INS</code>, <code>SIU_UPD</code>, <code>SIU_RPD</code> e <code>SIU_DEL</code> e i relativi Bundle AMB documentati possono già essere inviati al nostro backend per le prestazioni assegnate a Kiber?</li>
+<li><strong>Configurazione o sviluppo:</strong> se l'invio non è già disponibile, possiamo attivarlo configurando l'inoltro dei messaggi esistenti oppure serve uno sviluppo da parte vostra, eventualmente con messaggi specifici?</li>
+<li><strong>Mittente e percorso di consegna:</strong> riceveremo i messaggi direttamente dal CUP oppure attraverso il sistema di integrazione IRT?</li>
+<li><strong>Risposte del nostro servizio:</strong> quali risposte deve restituire il backend Kiber, se previste, per confermare ricezione ed elaborazione o segnalare un errore?</li>
+<li><strong>Dati necessari:</strong> i messaggi contengono un identificativo stabile dell'appuntamento/prestazione, gli identificativi stabili del paziente e del medico previsto, il sistema/ente di origine degli identificativi, data/ora e tipo di prestazione? Questi dati ci servono per preparare la sessione e riconoscere le associazioni già presenti in Kiber.</li>
+<li><strong>Eventuali dati mancanti:</strong> se qualche informazione non è inclusa, può essere fornita nello stesso flusso degli appuntamenti? Un semplice riferimento a una persona è sufficiente solo se Kiber può risolverlo in modo concordato. Preferiamo acquisire qui tutti i dati necessari; un recupero aggiuntivo da IRT sarà valutato soltanto se questo flusso non può fornirli.</li>
+<li><strong>Assegnazione successiva e sostituzioni del medico:</strong> se il medico viene assegnato dopo la prenotazione o sostituito, come riceviamo questo aggiornamento?</li>
+</ul>
+<p><strong>Da preparare in Kiber:</strong></p>
+<ul>
+<li><strong>Ricezione e salvataggio:</strong> ricevere e conservare nel backend i messaggi di prenotazione e aggiornamento, collegandoli alla prestazione regionale.</li>
+<li><strong>Controllo dei duplicati:</strong> evitare che la stessa comunicazione ricevuta più volte crei due visite.</li>
+<li><strong>Calendario:</strong> riutilizzare la vista Calendario di Kiber Assistant, alimentandola dal backend Kiber.</li>
+<li><strong>Nuove prenotazioni:</strong> rendere visibili nel calendario gli appuntamenti ricevuti.</li>
+<li><strong>Modifiche e spostamenti:</strong> aggiornare l'appuntamento esistente con le nuove informazioni, comprese data e ora.</li>
+<li><strong>Cancellazioni:</strong> indicare l'appuntamento come annullato oppure rimuoverlo dalla vista, impedendo in ogni caso l'ingresso alla call.</li>
+<li><strong>Accesso ai propri appuntamenti:</strong> il backend deve restituire soltanto gli appuntamenti autorizzati del paziente identificato.</li>
+</ul>
+<p><strong>Collegamento con il passaggio successivo:</strong> al <a href="#5-il-paziente-accede-a-kiber-assistant-e-si-identifica">punto 5 — Il paziente accede a Kiber Assistant e si identifica</a>, il paziente apre l'app, si identifica e consulta questa vista Calendario; al punto 6 seleziona l'appuntamento per entrare nella chiamata.</p>
+<p><strong>Riferimento alla documentazione:</strong> Specifiche → Integrazione CUP Regionale, argomenti prenotazione, modifica, spostamento e disdetta; Esempi → Integrazione CUP Regionale, esempi dei relativi piani di lavoro. Anche Specifiche → Integrazione Consuntivo Televisite descrive il CUP che assegna la televisita al sistema esterno. <strong>Copertura parziale:</strong> sono scenari di riferimento; resta da confermare quale flusso alimenterà Kiber in Lombardia.</p>
+<h3 id="2-il-backend-controlla-le-associazioni-e-prepara-la-sessione-kiber">2. Il backend controlla le associazioni e prepara la sessione Kiber</h3>
+<p><strong>Questo passaggio è interno a Kiber.</strong> Usa i dati ricevuti al punto 1 e non richiede, nel flusso proposto, un nuovo messaggio o un'operazione aggiuntiva della IRT.</p>
+<p>Per il medico e per il paziente, il backend esegue lo stesso controllo:</p>
+<ol>
+<li>Cerca nei propri dati l'identificativo della persona ricevuto da IRT, insieme al sistema/ente che lo ha assegnato.</li>
+<li><strong>Se esiste già un'associazione con un'identità ACS, recupera e riutilizza quell'identità.</strong> Non crea una nuova utenza di chiamata a ogni appuntamento.</li>
+<li><strong>Se l'associazione non esiste, crea un'identità ACS e salva il collegamento</strong> fra identificativo IRT, persona Kiber e identità ACS. Nelle visite successive troverà questa associazione già presente.</li>
+</ol>
+<p>Le identità ACS sono riferimenti tecnici per usare il servizio di chiamata: non sono account Microsoft e non richiedono password da consegnare agli utenti. Il backend deve gestire anche il caso in cui un'associazione esista ma l'identità ACS non sia più utilizzabile, ripristinando il collegamento in modo controllato.</p>
+<p>Il backend registra poi la sessione Kiber collegata all'appuntamento e i partecipanti previsti. Se l'appuntamento è già stato ricevuto, aggiorna la registrazione esistente invece di creare una seconda sessione per una comunicazione duplicata.</p>
+<p><strong>Preparare le associazioni non significa autenticare le persone:</strong> qui sappiamo chi è previsto alla visita. Quando medico e paziente accedono, nei punti successivi verifichiamo che siano effettivamente quelle persone e che possano partecipare. Solo allora rilasciamo i token, cioè le credenziali temporanee per la chiamata.</p>
+<p><strong>Da preparare in Kiber:</strong></p>
+<ul>
+<li><strong>Archivio delle associazioni:</strong> conservare il collegamento fra identificativo della persona IRT, sistema/ente di origine, persona Kiber e identità ACS.</li>
+<li><strong>Controllo delle associazioni esistenti:</strong> prima di creare un'identità ACS, verificare se per quella persona esiste già un'associazione utilizzabile.</li>
+<li><strong>Riutilizzo o creazione:</strong> riutilizzare l'identità ACS già associata; se l'associazione manca, creare l'identità e salvare il collegamento per le visite successive.</li>
+<li><strong>Ripristino delle associazioni:</strong> gestire in modo controllato i casi in cui l'associazione esiste ma l'identità ACS non è più utilizzabile.</li>
+<li><strong>Preparazione della sessione:</strong> collegare l'appuntamento alla sessione Kiber e ai partecipanti previsti, aggiornando la registrazione esistente se il messaggio è già stato ricevuto.</li>
+<li><strong>Modalità di chiamata:</strong> scegliere la modalità ACS autonoma, eventualmente ACS Rooms, e le relative regole di accesso.</li>
+<li><strong>Credenziali al momento dell'accesso:</strong> predisporre il rilascio dei token di chiamata soltanto dopo la verifica dell'identità e dell'autorizzazione dell'utente, nei passaggi successivi del workflow.</li>
+</ul>
+<h3 id="3-il-medico-trova-lappuntamento-in-irt-e-apre-kiber-connect-webapp">3. Il medico trova l'appuntamento in IRT e apre Kiber Connect Webapp</h3>
+<p>Il medico accede alla IRT e trova la prestazione da svolgere con Kiber. Proponiamo che possa aprire Kiber Connect Webapp attraverso un pulsante come “Vai alla call”, disponibile nella lista degli appuntamenti o nella scheda della prestazione. Dove compaia il pulsante e quale schermata veda il medico devono essere confermati con i referenti IRT.</p>
+<p>L'apertura deve permettere a Kiber di riconoscere la prestazione e verificare chi è il medico e se può accedervi. Il semplice identificativo del medico scritto nel link non è sufficiente a provarne l'identità. Questo passaggio riguarda l'accesso del medico; i messaggi di prenotazione descritti al punto 1 preparano l'appuntamento, ma non autenticano chi preme il pulsante.</p>
+<p><strong>Da chiarire con IRT:</strong></p>
+<ul>
+<li><strong>Accesso del medico alla piattaforma:</strong> come accede normalmente il medico alla IRT nella configurazione lombarda? Qual è il percorso previsto per gli utenti coinvolti nella nostra integrazione?</li>
+<li><strong>Schermata di lavoro:</strong> dopo l'accesso, il medico vede un calendario, una lista di lavoro o un'altra schermata? Dove trova gli appuntamenti del giorno e come apre la singola prestazione? Sarebbe utile vedere un esempio del percorso reale.</li>
+<li><strong>Posizione del pulsante Kiber:</strong> possiamo inserire “Vai alla call” nella lista degli appuntamenti o nella scheda della prestazione assegnata a Kiber? È una configurazione già disponibile oppure richiede uno sviluppo nella IRT?</li>
+<li><strong>Comando di apertura verso Kiber:</strong> esiste una specifica già disponibile per l'apertura di un'applicazione esterna di videochiamata? Quale meccanismo possiamo usare per aprire Kiber dalla prestazione?</li>
+<li><strong>Associazione del pulsante alla sessione Kiber:</strong> possiamo fornire un link opaco alla sessione, da associare all'appuntamento e usare nel pulsante “Vai alla call”. Come può IRT ricevere e memorizzare questo link? In alternativa, può costruire l'indirizzo Kiber usando l'identificativo della prestazione già condiviso nei messaggi di prenotazione? Il riferimento identifica quale sessione aprire; la verifica dell'identità e dell'autorizzazione del medico è trattata nel punto successivo.</li>
+<li><strong>Accesso del medico da IRT a Kiber:</strong> il medico è già autenticato in IRT. Come può IRT trasmettere questa autenticazione a Kiber, permettendoci di riconoscere il medico e verificare che possa accedere all'appuntamento, senza chiedergli un nuovo login?</li>
+<li><strong>Sostituzioni e riaperture:</strong> cosa accade se apre la visita un medico diverso da quello inizialmente assegnato oppure se il medico preme il pulsante più volte? Come vengono comunicate e verificate le autorizzazioni aggiornate?</li>
+<li><strong>Ritorno a IRT:</strong> dopo la chiamata è previsto un pulsante o un indirizzo per tornare alla prestazione nella IRT? Quale schermata deve vedere il medico al rientro?</li>
+</ul>
+<p><strong>Da preparare in Kiber:</strong></p>
+<ul>
+<li><strong>Indirizzo di apertura:</strong> predisporre l'indirizzo Kiber Connect Webapp che la IRT dovrà aprire, seguendo il contratto concordato.</li>
+<li><strong>Verifica dell'accesso:</strong> controllare sul backend l'autenticità, la validità e le autorizzazioni del contesto ricevuto prima di consentire l'accesso alla visita.</li>
+<li><strong>Riconoscimento del medico:</strong> collegare l'identificativo verificato del medico alle associazioni registrate nel punto 2.</li>
+<li><strong>Apertura della prestazione corretta:</strong> usare il riferimento ricevuto per recuperare l'appuntamento e la sessione già preparati dai punti 1 e 2, evitando duplicati in caso di riapertura.</li>
+<li><strong>Informazioni visibili:</strong> mostrare al medico la prestazione, il paziente e l'orario necessari a verificare che sia entrato nella visita corretta, nei limiti delle autorizzazioni ricevute.</li>
+<li><strong>Gestione delle aperture non valide:</strong> mostrare un messaggio chiaro se il link è scaduto, la prestazione non è disponibile o il medico non è autorizzato, senza avviare la chiamata.</li>
+<li><strong>Prosecuzione e ritorno:</strong> portare il medico al collegamento descritto nel punto 4 e predisporre l'eventuale ritorno alla schermata IRT concordata.</li>
+</ul>
+<p><strong>Riferimento alla documentazione:</strong> nei materiali ricevuti non abbiamo individuato una specifica operativa per l'apertura di Kiber da IRT. Il meccanismo va concordato con i referenti IRT.</p>
+<h3 id="4-il-medico-entra-nella-sessione-e-attende-il-paziente">4. Il medico entra nella sessione e attende il paziente</h3>
+<p>Dopo aver premuto “Vai alla call” nel passaggio precedente, il medico entra nella sessione di Kiber Connect Webapp e si mette in attesa del paziente. Il backend gli fornisce le credenziali di chiamata per la sessione prevista, dopo aver verificato il suo accesso.</p>
+<p><strong>Da preparare in Kiber:</strong></p>
+<ul>
+<li><strong>Sala d'attesa e ammissione:</strong> mantenere il comportamento già disponibile nei meeting creati da Kiber Connect: il paziente entra nella sala d'attesa e il medico lo ammette alla chiamata. Verificare come riutilizzare o adattare questa funzione alle sessioni ACS previste.</li>
+</ul>
+<p><strong>Da concordare con IRT:</strong> quanto prima dell'appuntamento si può entrare e come considerare il tempo di attesa rispetto alla durata della prestazione.</p>
+<p><strong>Riferimento alla documentazione:</strong> <strong>Non coperto dall’GUIDA FHIR:</strong> ingresso nella call ACS, sala d’attesa e ammissione del paziente. Queste funzioni sono da definire in Kiber. Le regole clinico-amministrative su quando inizia l’erogazione devono essere concordate con IRT.</p>
+<h3 id="5-il-paziente-accede-a-kiber-assistant-e-si-identifica">5. Il paziente accede a Kiber Assistant e si identifica</h3>
+<p>Il paziente apre l'app e si identifica (con SPID? È un'ipotesi da confermare con IRT). Il backend collega l'identità verificata al paziente indicato da IRT e mostra nel calendario soltanto gli appuntamenti che è autorizzato a vedere.</p>
+<p>Dopo l'accesso, il paziente apre la vista Calendario e trova gli appuntamenti ricevuti e aggiornati dal backend come descritto al punto 1.</p>
+<p><strong>Da chiarire con IRT:</strong></p>
+<ul>
+<li><strong>Modalità di autenticazione:</strong> come deve identificarsi il paziente in Kiber Assistant? Possiamo usare SPID oppure è previsto o richiesto un altro meccanismo? SPID è al momento una nostra ipotesi.</li>
+<li><strong>Associazione al paziente IRT:</strong> quale identificativo verificato usare per riconoscere il paziente corretto?</li>
+<li><strong>Accessi per altre persone:</strong> come gestire eventuali minori, caregiver o deleghe?</li>
+</ul>
+<p><strong>Da preparare in Kiber:</strong></p>
+<ul>
+<li><strong>Autenticazione del paziente:</strong> integrare la modalità concordata con IRT, eventualmente SPID se confermato.</li>
+<li><strong>Associazione dell'identità:</strong> collegare l'identità verificata al paziente IRT.</li>
+<li><strong>Calendario:</strong> mostrare in Assistant gli appuntamenti autorizzati ricevuti dal backend.</li>
+</ul>
+<p><strong>Riferimento alla documentazione:</strong></p>
+<ul>
+<li><strong>Associazione al paziente IRT:</strong> la GUIDA FHIR documenta gli identificativi e le operazioni anagrafiche in Specifiche → Integrazione Anagrafica Regionale, file <code>Home-Specifiche-Integrazione-Anagrafica-Regionale.html</code>, e il recupero e la traduzione degli identificativi in Specifiche → Modalità di recupero, file <code>Home-Specifiche-Modalità-di-recupero.html</code>. Resta da concordare quale identificativo verificato usare per collegare la persona autenticata al paziente della prenotazione.</li>
+<li><strong>Autenticazione e deleghe:</strong> nei materiali ricevuti non abbiamo individuato una specifica operativa per l'autenticazione del paziente in Kiber Assistant o per gli accessi di caregiver e delegati. La modalità di accesso, l'eventuale uso di SPID e le regole per questi casi vanno concordati con IRT.</li>
+</ul>
+<h3 id="6-il-paziente-seleziona-lappuntamento-ed-entra-nella-chiamata">6. Il paziente seleziona l'appuntamento ed entra nella chiamata</h3>
+<p>Intorno all'orario previsto il paziente preme sull'appuntamento. Kiber verifica che possa partecipare e gli consente l'accesso alla sala d'attesa della sessione prevista, usando la sua identità ACS. Il paziente attende finché il medico lo ammette alla chiamata. Può accedere anche prima dell'orario dell'appuntamento, entro l'anticipo consentito da definire al punto 4.</p>
+<p><strong>Da preparare in Kiber:</strong> collegamento con identità ACS senza Entra, messaggi di attesa comprensibili e gestione di eventuali disconnessioni e rientri.</p>
+<p><strong>Da chiarire con IRT:</strong> come trattare ritardi, mancata partecipazione e visite annullate o spostate.</p>
+<p><strong>Riferimento alla documentazione:</strong></p>
+<ul>
+<li><strong>Appuntamenti modificati o cancellati:</strong> si applicano gli eventi e i messaggi della GUIDA FHIR già indicati al punto 1; Kiber deve usare l'appuntamento aggiornato per verificare se il paziente può accedere alla sessione.</li>
+<li><strong>Mancata partecipazione:</strong> Specifiche → Integrazione CUP Regionale, file <code>Home-Specifiche-Integrazione-CUP-Regionale.html</code>, descrive anche gli scenari di prestazione non erogata e paziente non presentato. Resta da concordare con IRT quando applicarli e come comunicarli nel nostro percorso.</li>
+<li><strong>Ingresso e sala d'attesa:</strong> nei materiali ricevuti non abbiamo individuato una specifica operativa per l'accesso del paziente alla sessione Kiber, l'attesa o l'ammissione alla chiamata ACS. Queste funzioni sono a carico di Kiber; l'anticipo consentito e le regole per i ritardi vanno concordati con IRT.</li>
+</ul>
+<h3 id="7-la-videochiamata-si-svolge-e-kiber-raccoglie-i-dati">7. La videochiamata si svolge e Kiber raccoglie i dati</h3>
+<p>Medico e paziente comunicano tramite Kiber e ACS. Kiber registra quando entrano ed escono, quando la chiamata inizia e termina e se ci sono interruzioni. Questi dati servono a preparare il riepilogo della prestazione.</p>
+<p><strong>Da chiarire con IRT:</strong> quali dati servono, come calcolare la durata e quali informazioni devono essere confermate dal medico.</p>
+<p><strong>Da preparare in Kiber:</strong> raccolta e conservazione dei dati, distinguendo l'attesa dalla visita e gestendo le riconnessioni.</p>
+<p><strong>Riferimento alla documentazione:</strong></p>
+<ul>
+<li><strong>Dati della prestazione erogata:</strong> la GUIDA FHIR descrive il modello del consuntivo in Specifiche → Integrazione Consuntivo Televisite, file <code>Home-Specifiche-Integrazione-Consuntivo-Televisite.html</code>, con le risorse Patient, Encounter-AMB e ServiceRequest. I relativi esempi sono in Esempi → Integrazione Consuntivo Televisite, file <code>Home-Esempi-Integrazione-Consuntivo-Televisite.html</code>. Questi riferimenti servono a individuare i dati da raccogliere per il risultato da inviare; i campi richiesti per la nostra integrazione vanno confermati con IRT.</li>
+<li><strong>Raccolta e calcolo dei tempi:</strong> nei materiali ricevuti non abbiamo individuato una specifica operativa per rilevare gli eventi della chiamata Kiber/ACS o per trattare attesa, interruzioni e riconnessioni nel calcolo della durata. La raccolta degli eventi è a carico di Kiber; le regole di calcolo e i dati da far confermare al medico vanno concordati con IRT.</li>
+</ul>
+<h3 id="8-il-paziente-esce-e-il-medico-conferma-il-risultato">8. Il paziente esce e il medico conferma il risultato</h3>
+<p>Al termine il paziente si disconnette. Il medico vede un riepilogo, controlla i dati e completa le informazioni eventualmente richieste. Poi preme “Conferma e invia a IRT”. Il backend conserva il risultato anche se il browser viene chiuso.</p>
+<p><strong>Da chiarire con IRT:</strong></p>
+<ul>
+<li><strong>Conferma del risultato:</strong> quali informazioni il medico deve inserire o confermare al termine della visita?</li>
+<li><strong>Referto:</strong> è richiesto anche un referto? Chi lo redige, valida ed eventualmente firma?</li>
+<li><strong>Report Kiber in allegato:</strong> come possiamo caricare il report Kiber e associarlo al referto oppure ai dati conclusivi della prestazione di telemedicina? Quali formati sono accettati, come va collegato alla prestazione e come sarà consultabile in IRT?</li>
+</ul>
+<p><strong>Da preparare in Kiber:</strong> schermata di riepilogo, pulsante di conferma e salvataggio affidabile del risultato.</p>
+<p><strong>Riferimento alla documentazione:</strong></p>
+<ul>
+<li><strong>Dati conclusivi della prestazione:</strong> la GUIDA FHIR descrive la restituzione del dettaglio dell'erogazione in Specifiche → Integrazione Consuntivo Televisite, file <code>Home-Specifiche-Integrazione-Consuntivo-Televisite.html</code>, già richiamato al punto 7. Resta da concordare quali dati debba inserire o confermare il medico nel nostro caso.</li>
+<li><strong>Documenti associati alla prestazione:</strong> Specifiche → Integrazione Refertazione Esterna, file <code>Home-Specifiche-Integrazione-Refertazione-Esterna.html</code>, tratta il collegamento dei documenti alla prestazione e la gestione di validazione e firma. La modalità FHIR per trasmettere documenti è descritta in Paradigmi FHIR → Document, file <code>Home-FHIRParadigms-Document.html</code>, con le risorse DocumentManifest, DocumentReference e Binary. Sono riferimenti per concordare l'invio del report Kiber; non confermano che sia già supportato come allegato al referto o al consuntivo, né come sarà visualizzato in IRT.</li>
+<li><strong>Conferma in Kiber:</strong> nei materiali ricevuti non abbiamo individuato una specifica operativa per la schermata di riepilogo o il pulsante di conferma Kiber. Queste funzioni sono a carico nostro, sulla base dei dati e delle regole concordati con IRT.</li>
+</ul>
+<h3 id="9-il-backend-invia-i-dati-alla-irt-e-mostra-lesito">9. Il backend invia i dati alla IRT e mostra l'esito</h3>
+<p>Il backend converte il risultato nel formato FHIR richiesto dalla IRT, cioè il formato concordato per scambiare i dati sanitari, e lo invia. Se ci sono problemi temporanei riprova; se i dati vanno corretti lo segnala. Il medico può vedere se il risultato è salvato, in attesa di invio, acquisito dalla IRT o da correggere.</p>
+<p><strong>Esempio documentato da verificare per questo passaggio:</strong> la guida contiene Bundle AMB inserimento piano di lavoro (sistema esterno), con evento <code>SIU_INS_EROG</code> (“Inserimento erogazione prestazione/visita”). Il messaggio ha origine da un sistema esterno e rappresenta una prestazione già erogata. È quindi un possibile riferimento per il ritorno del risultato dopo la chiamata, non per ricevere una nuova prenotazione. Va confermato con IRT se sia il messaggio da usare per il consuntivo Kiber. Il file è <code>Home-Esempi-Integrazione-CUP-Regionale-Bundle-AMB-inserimento-piano-di-lavoro-sistema-esterno.html</code>.</p>
+<p><strong>Da chiarire con IRT:</strong></p>
+<ul>
+<li><strong>Modalità di invio:</strong> dove e come dobbiamo inviare il risultato? Quale messaggio o operazione della GUIDA FHIR dobbiamo usare e quali dati sono obbligatori?</li>
+<li><strong>Risposta al nostro servizio:</strong> quale risposta riceviamo in caso di successo o errore? Conferma soltanto la ricezione del messaggio oppure anche l'accettazione dei dati della prestazione?</li>
+<li><strong>Chiusura della prestazione:</strong> dopo la fine della chiamata e l'invio del risultato, quali passaggi portano alla chiusura della prestazione in IRT? L'acquisizione dei dati la chiude automaticamente oppure serve un'ulteriore operazione, e chi deve eseguirla? Quale risposta o stato possiamo usare per mostrare al medico che la prestazione è effettivamente chiusa?</li>
+<li><strong>Verifica di un invio incerto:</strong> se non riceviamo una risposta, come possiamo verificare se IRT ha già acquisito il risultato ed evitare un invio duplicato?</li>
+</ul>
+<p><strong>Da preparare in Kiber:</strong> conversione FHIR, consegna affidabile e visualizzazione dell'esito, evitando invii duplicati.</p>
+<p><strong>Riferimento alla documentazione:</strong></p>
+<ul>
+<li><strong>Invio dei messaggi e risposte:</strong> la GUIDA FHIR descrive i Bundle di messaggio, l'operazione <code>$process-message</code>, i messaggi di risposta e gli errori OperationOutcome in Paradigmi FHIR → Messaging, file <code>Home-FHIRParadigms-Messaging.html</code>. IRT deve confermare se questa modalità si applica al risultato Kiber, l'indirizzo del servizio e il significato delle risposte.</li>
+<li><strong>Contenuto del risultato:</strong> si applicano le specifiche e gli esempi di <strong>Integrazione Consuntivo Televisite</strong>, con i file indicati al punto 7. L'esempio con evento <code>SIU_INS_EROG</code>, riportato sopra con il relativo file, è un possibile messaggio per una prestazione erogata: il suo utilizzo nel nostro percorso deve essere confermato con IRT.</li>
+<li><strong>Report e documenti allegati:</strong> per l'eventuale invio del report Kiber si rimanda ai riferimenti <strong>Document</strong> e <strong>Integrazione Refertazione Esterna</strong> del punto 8. Va concordato se il documento viene inviato insieme al risultato oppure con un'operazione separata.</li>
+<li><strong>Acquisizione e chiusura:</strong> nei materiali ricevuti non abbiamo individuato una specifica operativa completa che colleghi la fine della chiamata Kiber, l'accettazione del risultato e la chiusura della prestazione in IRT. I passaggi richiesti e il riscontro da mostrare al medico vanno concordati con IRT.</li>
+</ul>
+<h2 id="lista-operativa-operazioni-lato-kiber">Lista operativa operazioni lato Kiber</h2>
+<h3 id="1-preparare-lintegrazione-nei-client-kiber">1. Preparare l'integrazione nei client Kiber</h3>
+<ul>
+<li>Predisporre l'integrazione in Kiber Assistant e Kiber Connect Webapp: il medico arriva da IRT, il paziente si identifica con la modalità da concordare e la chiamata usa ACS.</li>
+<li>Integrare SPID soltanto se viene confermato come modalità di autenticazione del paziente.</li>
+<li>Collegare i client ai servizi di identità e calendario previsti per l'integrazione con IRT.</li>
+</ul>
+<p><strong>Il lavoro è completato quando:</strong> medico e paziente possono accedere ai client con le modalità concordate.</p>
+<h3 id="2-ricevere-prenotazioni-modifiche-e-cancellazioni">2. Ricevere prenotazioni, modifiche e cancellazioni</h3>
+<ul>
+<li>Preparare il servizio del backend che riceve i messaggi concordati con IRT. Gli eventi documentati da verificare sono <code>SIU_INS</code>, <code>SIU_UPD</code>, <code>SIU_RPD</code> e <code>SIU_DEL</code>.</li>
+<li>Conservare il riferimento stabile alla prestazione, gli identificativi di paziente e medico con il relativo sistema/ente di origine, data, ora, tipo e stato dell'appuntamento.</li>
+<li>Gestire messaggi ripetuti senza creare doppioni, aggiornamenti del medico assegnato e recupero delle comunicazioni non ricevute, secondo le modalità concordate.</li>
+<li>Restituire le risposte richieste al nostro servizio e impedire l'accesso alle visite cancellate.</li>
+</ul>
+<p><strong>Il lavoro è completato quando:</strong> ogni prenotazione compare una sola volta e modifiche, spostamenti e cancellazioni aggiornano correttamente sessione e calendario.</p>
+<h3 id="3-controllare-le-associazioni-acs-e-preparare-la-sessione">3. Controllare le associazioni ACS e preparare la sessione</h3>
+<ul>
+<li>Per medico e paziente, cercare l'associazione già salvata fra identificativo IRT, persona Kiber e identità ACS.</li>
+<li>Riutilizzare l'identità ACS presente; crearla e salvare l'associazione soltanto se manca. Prevedere il ripristino controllato di associazioni non più valide.</li>
+<li>Preparare una sessione correlata alla prestazione e registrare i partecipanti autorizzati, evitando duplicati in caso di aggiornamenti o riaperture.</li>
+<li>Scegliere la modalità ACS autonoma adatta all'integrazione. Rilasciare i token di chiamata quando la persona accede, dopo le verifiche di identità e autorizzazione.</li>
+</ul>
+<p><strong>Il lavoro è completato quando:</strong> le visite successive riutilizzano le associazioni esistenti e soltanto i partecipanti autorizzati ricevono l'accesso alla sessione corretta.</p>
+<h3 id="4-aprire-kiber-connect-webapp-dal-pulsante-irt">4. Aprire Kiber Connect Webapp dal pulsante IRT</h3>
+<ul>
+<li>Predisporre un link opaco alla sessione, da associare all'appuntamento in IRT, oppure la costruzione del link con il riferimento alla prestazione, se questa è la modalità concordata.</li>
+<li>Verificare sul backend la prova dell'autenticazione del medico trasmessa da IRT e il suo diritto ad accedere alla prestazione, senza chiedergli un nuovo login.</li>
+<li>Mostrare paziente, prestazione e orario per consentire al medico di verificare la visita aperta.</li>
+<li>Gestire sostituzioni del medico, riaperture e collegamenti non validi; predisporre l'eventuale ritorno a IRT.</li>
+</ul>
+<p><strong>Il lavoro è completato quando:</strong> il pulsante apre la sessione giusta per il medico autorizzato e un'apertura non valida viene rifiutata.</p>
+<h3 id="5-identificare-il-paziente-e-alimentare-il-calendario-di-assistant">5. Identificare il paziente e alimentare il calendario di Assistant</h3>
+<ul>
+<li>Collegare l'identità verificata con la modalità concordata al paziente della prenotazione, usando un identificativo affidabile; nome e cognome da soli non bastano.</li>
+<li>Applicare le regole concordate per minori, caregiver e delegati. Se l'associazione non è verificabile, mostrare un messaggio comprensibile senza esporre appuntamenti altrui.</li>
+<li>Alimentare la vista Calendario con gli appuntamenti del backend Kiber, aggiornandola con modifiche e cancellazioni ricevute.</li>
+<li>Mostrare gli orari corretti e permettere l'apertura soltanto degli appuntamenti autorizzati e ancora validi.</li>
+</ul>
+<p><strong>Il lavoro è completato quando:</strong> il paziente vede i propri appuntamenti aggiornati e può accedere soltanto alle visite consentite.</p>
+<h3 id="6-mantenere-sala-dattesa-e-ammissione-del-medico">6. Mantenere sala d'attesa e ammissione del medico</h3>
+<ul>
+<li>Riutilizzare o adattare il comportamento già disponibile nei meeting creati da Kiber Connect: il paziente entra nella sala d'attesa e il medico lo ammette alla chiamata.</li>
+<li>Applicare l'anticipo consentito e le regole concordate per ritardi e mancata partecipazione.</li>
+<li>Mostrare chiaramente lo stato di attesa e gestire disconnessioni e rientri nella stessa sessione.</li>
+</ul>
+<p><strong>Il lavoro è completato quando:</strong> il paziente può attendere prima della visita entro i limiti previsti e viene ammesso dal medico.</p>
+<h3 id="7-raccogliere-i-dati-della-chiamata">7. Raccogliere i dati della chiamata</h3>
+<ul>
+<li>Registrare ingressi, uscite, inizio e fine della chiamata e interruzioni necessari al consuntivo concordato.</li>
+<li>Distinguere il tempo di attesa da quello della visita e trattare le riconnessioni secondo le regole definite con IRT.</li>
+<li>Conservare sul backend i dati necessari al riepilogo e calcolare la durata con il criterio concordato.</li>
+</ul>
+<p><strong>Il lavoro è completato quando:</strong> il riepilogo ricostruisce la visita e i suoi tempi anche in presenza di interruzioni.</p>
+<h3 id="8-preparare-riepilogo-conferma-e-report-kiber">8. Preparare riepilogo, conferma e report Kiber</h3>
+<ul>
+<li>Presentare al medico i dati rilevati e i campi che deve completare o confermare prima dell'invio.</li>
+<li>Predisporre il pulsante “Conferma e invia a IRT” e conservare il risultato sul backend anche dopo la chiusura del browser.</li>
+<li>Preparare il report Kiber nel formato accettato e il suo collegamento al referto oppure ai dati conclusivi della prestazione, secondo quanto concordato con IRT.</li>
+<li>Se è richiesto un referto, implementare le attività assegnate a Kiber nel processo di produzione, validazione, firma e invio al Fascicolo Sanitario Elettronico.</li>
+</ul>
+<p><strong>Il lavoro è completato quando:</strong> il medico può confermare il risultato e il report può essere associato alla prestazione con la modalità concordata.</p>
+<h3 id="9-inviare-il-risultato-e-mostrare-il-suo-stato">9. Inviare il risultato e mostrare il suo stato</h3>
+<ul>
+<li>Costruire e controllare il risultato secondo i profili, i messaggi e le operazioni della GUIDA FHIR confermati per il nostro percorso, compreso l'eventuale uso di <code>SIU_INS_EROG</code>.</li>
+<li>Inviare dati e documenti ai servizi concordati, insieme o separatamente secondo le specifiche ricevute.</li>
+<li>Gestire errori, correzioni e invii incerti; verificare l'esito prima di ripetere una consegna che potrebbe essere già avvenuta.</li>
+<li>Mostrare gli stati effettivamente verificabili: risultato salvato, in attesa di invio, acquisito, da correggere e prestazione chiusa. Implementare l'eventuale operazione di chiusura soltanto se assegnata a Kiber.</li>
+</ul>
+<p><strong>Il lavoro è completato quando:</strong> IRT acquisisce il risultato senza doppioni e Kiber mostra correttamente sia l'esito dell'invio sia lo stato di chiusura disponibile.</p>
+<h3 id="10-collaudare-lintero-percorso">10. Collaudare l'intero percorso</h3>
+<ul>
+<li>Provare con IRT prenotazione, aggiornamento, cancellazione, apertura del medico, accesso del paziente, lobby, ammissione, conferma e invio del risultato con il report.</li>
+<li>Includere sostituzioni del medico, anticipo, ritardi, assenze, perdita di rete, accessi non autorizzati, messaggi ripetuti e invii da correggere.</li>
+<li>Verificare acquisizione dei dati, consultazione dell'allegato e chiusura della prestazione in IRT.</li>
+<li>Definire accesso e conservazione dei dati, responsabilità di assistenza e condizioni per il passaggio in esercizio.</li>
+</ul>
+<p><strong>Il lavoro è completato quando:</strong> il percorso completo e i casi problematici superano le verifiche concordate nell'ambiente IRT di test.</p>
+<h2 id="lista-quesiti-per-referenti-irt">Lista quesiti per referenti IRT</h2>
+<p>Proponiamo che il medico apra Kiber Connect Webapp dalla prestazione in IRT e che il paziente trovi l'appuntamento in Kiber Assistant, dopo essersi identificato con una modalità da concordare; SPID è una nostra ipotesi. Il paziente attende nella lobby e il medico lo ammette. Al termine, il medico conferma il risultato e Kiber invia i dati e l'eventuale report allegato a IRT.</p>
+<h3 id="1-il-percorso-proposto-e-utilizzabile-nella-nostra-integrazione">1. Il percorso proposto è utilizzabile nella nostra integrazione?</h3>
+<ul>
+<li>Possiamo svolgere la videochiamata con Kiber/ACS e mantenere la prestazione registrata in IRT?</li>
+<li>Lo scenario <strong>Consuntivo Televisite</strong> della GUIDA FHIR si applica al nostro caso in Lombardia? Quali differenze sono previste per televisita e teleconsulto?</li>
+</ul>
+<h3 id="2-come-viene-prenotata-e-assegnata-a-kiber-la-prestazione">2. Come viene prenotata e assegnata a Kiber la prestazione?</h3>
+<ul>
+<li>Il medico crea la prenotazione direttamente in IRT oppure questa arriva dal CUP?</li>
+<li>In quale passaggio viene indicato che la prestazione sarà svolta con Kiber, e quale sistema comunica l'appuntamento al nostro backend?</li>
+</ul>
+<h3 id="3-possiamo-ricevere-i-messaggi-documentati-per-gli-appuntamenti">3. Possiamo ricevere i messaggi documentati per gli appuntamenti?</h3>
+<ul>
+<li>Gli eventi <code>SIU_INS</code>, <code>SIU_UPD</code>, <code>SIU_RPD</code> e <code>SIU_DEL</code>, con i relativi messaggi Bundle AMB della GUIDA FHIR, sono utilizzabili per inviare al nostro backend nuove prenotazioni, modifiche, spostamenti e cancellazioni?</li>
+<li>Se l'invio non è già disponibile, basta configurare l'inoltro dei messaggi esistenti oppure serve uno sviluppo IRT, eventualmente con messaggi specifici?</li>
+<li>Chi sarà il mittente effettivo e quali risposte deve restituire il nostro servizio per ricezione, elaborazione ed errori?</li>
+<li>Come recuperiamo comunicazioni non ricevute durante un'interruzione? Se l'invio non è previsto, quale servizio possiamo consultare per ottenere appuntamenti e aggiornamenti?</li>
+</ul>
+<h3 id="4-quali-dati-riceviamo-per-preparare-sessione-e-calendario">4. Quali dati riceviamo per preparare sessione e calendario?</h3>
+<ul>
+<li>Possiamo ricevere nello stesso flusso gli identificativi stabili di prestazione, paziente e medico, con sistema/ente di origine, data, ora, tipo e stato dell'appuntamento?</li>
+<li>Come vengono comunicati assegnazioni successive e sostituzioni del medico?</li>
+<li>Se alcuni dati non possono essere inclusi, quali mancano e come possiamo recuperarli?</li>
+</ul>
+<h3 id="5-dove-viene-presentato-il-pulsante-vai-alla-call">5. Dove viene presentato il pulsante “Vai alla call”?</h3>
+<ul>
+<li>Come accede il medico a IRT e che cosa vede: calendario, lista di lavoro o altra schermata? Potete mostrarci un esempio del percorso reale?</li>
+<li>Possiamo inserire il pulsante nella lista o nella scheda della prestazione? È una configurazione disponibile o richiede uno sviluppo?</li>
+<li>Esiste già una specifica per aprire da IRT un'applicazione esterna di videochiamata?</li>
+</ul>
+<h3 id="6-come-associamo-il-link-kiber-allappuntamento">6. Come associamo il link Kiber all'appuntamento?</h3>
+<ul>
+<li>Possiamo fornire un link opaco alla sessione da usare nel pulsante? Come può IRT riceverlo e memorizzarlo?</li>
+<li>In alternativa, può costruire l'indirizzo usando l'identificativo della prestazione già condiviso nei messaggi?</li>
+<li>Dopo la chiamata è previsto un ritorno alla prestazione in IRT? Quale indirizzo e schermata dobbiamo usare?</li>
+</ul>
+<h3 id="7-come-riceviamo-la-verifica-dellaccesso-del-medico">7. Come riceviamo la verifica dell'accesso del medico?</h3>
+<ul>
+<li>Il medico è già autenticato in IRT: come può IRT trasmettere questa verifica a Kiber, consentendoci di riconoscerlo e controllare il suo diritto di accesso senza un nuovo login?</li>
+<li>Come gestiamo sostituzioni, autorizzazioni aggiornate e riaperture dello stesso appuntamento?</li>
+</ul>
+<h3 id="8-come-si-identifica-il-paziente-in-kiber-assistant">8. Come si identifica il paziente in Kiber Assistant?</h3>
+<ul>
+<li>Possiamo usare SPID oppure è previsto o richiesto un altro meccanismo? SPID è al momento una nostra ipotesi.</li>
+<li>Quale identificativo verificato permette di associare la persona autenticata al paziente della prenotazione?</li>
+<li>Quali regole si applicano a minori, caregiver e delegati, sia per vedere gli appuntamenti sia per partecipare alla chiamata?</li>
+</ul>
+<h3 id="9-quali-regole-si-applicano-ad-anticipo-ritardi-e-assenze">9. Quali regole si applicano ad anticipo, ritardi e assenze?</h3>
+<ul>
+<li>Quanto prima dell'orario previsto possono accedere medico e paziente? Il paziente resterà in sala d'attesa fino all'ammissione del medico.</li>
+<li>Come trattiamo ritardi, mancata partecipazione, prestazioni non erogate e visite annullate o spostate?</li>
+<li>Quando e con quali messaggi dobbiamo comunicare questi esiti a IRT?</li>
+</ul>
+<h3 id="10-quali-dati-raccogliamo-e-come-calcoliamo-i-tempi">10. Quali dati raccogliamo e come calcoliamo i tempi?</h3>
+<ul>
+<li>Quali dati devono essere rilevati automaticamente e quali inseriti o confermati dal medico? Potete fornire un esempio completo accettato da IRT?</li>
+<li>Da quale momento inizia la durata della prestazione? L'attesa conta? Come trattiamo interruzioni e riconnessioni?</li>
+<li>È sufficiente il riepilogo finale oppure servono aggiornamenti durante la chiamata?</li>
+</ul>
+<h3 id="11-come-inviamo-il-report-kiber-e-leventuale-referto">11. Come inviamo il report Kiber e l'eventuale referto?</h3>
+<ul>
+<li>È richiesto un referto? Chi lo redige, valida, firma e invia al Fascicolo Sanitario Elettronico?</li>
+<li>Come possiamo caricare il report Kiber come allegato al referto oppure ai dati conclusivi della prestazione?</li>
+<li>Quali formati e limiti sono previsti, quale riferimento collega l'allegato alla prestazione e dove sarà consultabile in IRT?</li>
+<li>Il documento viene inviato insieme al consuntivo oppure con un'operazione separata? Quali specifiche della GUIDA FHIR dobbiamo applicare?</li>
+</ul>
+<h3 id="12-quale-contratto-di-scambio-dobbiamo-implementare">12. Quale contratto di scambio dobbiamo implementare?</h3>
+<ul>
+<li>Quali profili, messaggi e operazioni della GUIDA FHIR si applicano a prenotazioni, consuntivo e documenti nel nostro caso?</li>
+<li>L'evento <code>SIU_INS_EROG</code> è quello da usare per il risultato Kiber? Si applica l'operazione <code>$process-message</code> oppure un'altra modalità?</li>
+<li>Potete fornire esempi completi, campi obbligatori, regole regionali e risposte attese?</li>
+<li>Quali eventuali operazioni della GUIDA ICCE sono necessarie per questo percorso?</li>
+</ul>
+<h3 id="13-come-ci-colleghiamo-ai-servizi-di-test-e-produzione">13. Come ci colleghiamo ai servizi di test e produzione?</h3>
+<ul>
+<li>Quali indirizzi, credenziali, modalità di autenticazione e configurazioni di rete servono?</li>
+<li>Le modalità di accesso ai servizi descritte nella GUIDA ICCE si applicano anche allo scambio FHIR oppure sono previste istruzioni diverse?</li>
+</ul>
+<h3 id="14-quando-il-risultato-e-acquisito-e-la-prestazione-e-chiusa">14. Quando il risultato è acquisito e la prestazione è chiusa?</h3>
+<ul>
+<li>La risposta all'invio conferma la ricezione del messaggio oppure anche l'accettazione dei dati?</li>
+<li>L'acquisizione del risultato chiude automaticamente la prestazione o serve un'altra operazione? Chi la esegue?</li>
+<li>Quale risposta o stato possiamo usare per mostrare al medico l'effettiva chiusura?</li>
+</ul>
+<h3 id="15-come-gestiamo-invii-incerti-errori-e-correzioni">15. Come gestiamo invii incerti, errori e correzioni?</h3>
+<ul>
+<li>Se non riceviamo risposta, come verifichiamo se il risultato è stato acquisito prima di ripetere l'invio?</li>
+<li>Come evitiamo doppioni e correggiamo dati o documenti già acquisiti?</li>
+<li>A chi possiamo rivolgerci se una prestazione rimane bloccata fra i due sistemi?</li>
+</ul>
+<h3 id="16-come-organizziamo-il-collaudo-e-il-passaggio-in-esercizio">16. Come organizziamo il collaudo e il passaggio in esercizio?</h3>
+<ul>
+<li>Potete fornire utenti e appuntamenti di test e un referente per provare il percorso completo?</li>
+<li>Quali verifiche sono richieste per approvare l'integrazione, compresi allegati e chiusura della prestazione?</li>
+<li>Quali responsabilità, regole di accesso e conservazione dei dati dobbiamo concordare per l'esercizio?</li>
+</ul><footer>Proposta tecnica · 7 ottobre 2026 · Fonte: workflow-pubblico-e-attivita.md</footer></main></div></body></html>
