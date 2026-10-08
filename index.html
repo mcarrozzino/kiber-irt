@@ -54,6 +54,7 @@ footer{font-size:12px;color:var(--muted);margin-top:40px;border-top:1px solid va
 <li><a href="#14-quando-il-risultato-e-acquisito-e-la-prestazione-e-chiusa">14. Quando il risultato è acquisito e la prestazione è chiusa?</a></li>
 <li><a href="#15-come-gestiamo-invii-incerti-errori-e-correzioni">15. Come gestiamo invii incerti, errori e correzioni?</a></li>
 <li><a href="#16-come-organizziamo-il-collaudo-e-il-passaggio-in-esercizio">16. Come organizziamo il collaudo e il passaggio in esercizio?</a></li>
+<li><a href="#17-quale-componente-di-videochiamata-usa-irt-e-possiamo-integrarlo-nei-client-kiber">17. Quale componente di videochiamata usa IRT e possiamo integrarlo nei client Kiber?</a></li>
 </ul>
 </li>
 </ul>
@@ -64,6 +65,12 @@ footer{font-size:12px;color:var(--muted);margin-top:40px;border-top:1px solid va
 <p>Proposta per la sanità pubblica · 7 ottobre 2026</p>
 <p>Kiber verrà modificato per consentire di scegliere fra un percorso <strong>“Privato”</strong>, che usa Microsoft Entra per l'accesso e i servizi Microsoft per calendario e riunioni, e un percorso <strong>“Pubblico”</strong>, che si integra con IRT.</p>
 <p><strong>Tutto ciò che segue si riferisce al percorso “Pubblico”.</strong> Questo documento descrive il funzionamento che proponiamo: alcuni passaggi sono già supportati dai materiali ricevuti; altri devono essere concordati con i referenti IRT.</p>
+<p>Proponiamo di realizzare l'integrazione in <strong>due fasi</strong>:</p>
+<ul>
+<li><strong>Prima fase — mantenere il componente di videochiamata Kiber basato su ACS:</strong> integrare prenotazioni, accessi e restituzione del risultato con IRT, mantenendo il nostro componente di comunicazione nei client Kiber Connect Webapp e Kiber Assistant. La modalità ACS da utilizzare dovrà essere verificata rispetto ai requisiti di identità e supporto Microsoft.</li>
+<li><strong>Seconda fase — valutare il componente di videochiamata IRT:</strong> verificare con i referenti se possiamo integrare nei nostri client il componente usato da IRT, mantenendo le funzioni Kiber di composizione del video, fermo immagine e annotazioni in tempo reale. Nel diagramma architetturale ricevuto compare un riquadro “MEETING WEBRTC” con i loghi Amazon Chime e WebRTC: da questa sola indicazione non possiamo stabilire il componente effettivamente utilizzato né le possibilità di integrazione.</li>
+</ul>
+<p>Il workflow seguente descrive la prima fase. L'eventuale passaggio al componente IRT sarà definito dopo averne verificato disponibilità, interfacce e compatibilità con le funzioni Kiber.</p>
 <h2 id="il-flusso-di-lavoro">Il flusso di lavoro</h2>
 <p>I riferimenti qui sotto rimandano alle pagine della <strong>Guida di integrazione FHIR</strong> v0.1.8 (di seguito <strong>GUIDA FHIR</strong>) e, ove necessario, alla guida <strong>IRT - Integrazione con Cartella Clinica Elettronica esterna</strong> (di seguito <strong>GUIDA ICCE</strong>). “Copertura parziale” significa che la guida tratta l’argomento, ma non conferma tutto il passaggio proposto. “Non coperto” indica che occorre un’altra specifica o una scelta Kiber. Le guide sono richiamate per titolo e nome del file; non sono incluse in questa pagina.</p>
 <h3 id="1-viene-prenotata-una-prestazione-da-svolgere-con-kiber">1. Viene prenotata una prestazione da svolgere con Kiber</h3>
@@ -431,4 +438,11 @@ footer{font-size:12px;color:var(--muted);margin-top:40px;border-top:1px solid va
 <li>Potete fornire utenti e appuntamenti di test e un referente per provare il percorso completo?</li>
 <li>Quali verifiche sono richieste per approvare l'integrazione, compresi allegati e chiusura della prestazione?</li>
 <li>Quali responsabilità, regole di accesso e conservazione dei dati dobbiamo concordare per l'esercizio?</li>
+</ul>
+<h3 id="17-quale-componente-di-videochiamata-usa-irt-e-possiamo-integrarlo-nei-client-kiber">17. Quale componente di videochiamata usa IRT e possiamo integrarlo nei client Kiber?</h3>
+<ul>
+<li>Abbiamo visto che nella documentazione architetturale della GUIDA ICCE, a pagina 4 (quinta pagina del PDF), il riquadro “MEETING WEBRTC” contiene i loghi Amazon Chime e WebRTC. Il componente utilizza Amazon Chime SDK come implementazione WebRTC oppure sono previste due modalità o altre implementazioni? Il riferimento a Chime si desume dal diagramma: potete confermare quale tecnologia è effettivamente usata nella configurazione IRT che ci riguarda?</li>
+<li>Per una prima fase possiamo mantenere il nostro componente di videochiamata basato su ACS, integrando con IRT appuntamenti, accessi e risultati, e valutare successivamente il vostro componente?</li>
+<li>Nella seconda fase, è possibile collegare direttamente Kiber Connect Webapp e Kiber Assistant alle sessioni gestite dal vostro componente? Quali API, SDK e credenziali di partecipazione sarebbero disponibili, e chi gestirebbe creazione della sessione, sala d'attesa e ammissione?</li>
+<li>I nostri client possono pubblicare uno stream video generato da Kiber, contenente elementi grafici, fermo immagine e annotazioni aggiornate in tempo reale, eventualmente come contenuto condiviso distinto dalla videocamera? Quali permessi e limiti si applicano e possiamo fare una prova fra Web e Android?</li>
 </ul><footer>Proposta tecnica · 7 ottobre 2026 · Fonte: workflow-pubblico-e-attivita.md</footer></main></div></body></html>
