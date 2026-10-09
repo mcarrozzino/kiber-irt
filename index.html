@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
   <head>
-
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,6 +22,7 @@ footer{font-size:12px;color:var(--muted);margin-top:40px;border-top:1px solid va
     <header><span>KIBER / IRT · PROPOSTA OPERATIVA</span>
       <div><button
           onclick="document.documentElement.requestFullscreen?.()">Schermo
+
           intero</button> <button onclick="window.print()">Stampa / PDF</button></div>
     </header>
     <div class="layout">
@@ -31,6 +31,7 @@ footer{font-size:12px;color:var(--muted);margin-top:40px;border-top:1px solid va
           <ul>
             <li><a
                 href="#kiber-e-irt-flusso-di-lavoro-e-punti-da-risolvere">Kiber
+
                 e IRT: flusso di lavoro e punti da risolvere</a>
               <ul>
                 <li><a href="#architettura-kiber">Architettura Kiber</a>
@@ -38,27 +39,34 @@ footer{font-size:12px;color:var(--muted);margin-top:40px;border-top:1px solid va
                     <li><a href="#1-scopo-e-perimetro">1. Scopo e
                         perimetro</a></li>
                     <li><a href="#2-vista-dinsieme-dellecosistema-kiber">2.
+
                         Vista d’insieme dell’ecosistema Kiber</a></li>
                     <li><a href="#3-kiber-assistant-e-kiberscope">3.
                         Kiber Assistant e Kiberscope</a>
                       <ul>
                         <li><a
                             href="#31-kiber-assistant-come-componente-centrale">3.1
+
                             Kiber Assistant come componente centrale</a></li>
                         <li><a href="#32-ruolo-del-visore-kiberscope">3.2
+
                             Ruolo del visore Kiberscope</a></li>
                         <li><a
                             href="#33-modalita-documed-documentazione-autonoma">3.3.
+
                             Modalità DOCUMED: documentazione autonoma</a></li>
                         <li><a
                             href="#34-modalita-collaborativa-assistenza-remota">3.4.
+
                             Modalità collaborativa: assistenza remota</a>
                           <ul>
                             <li><a
                                 href="#341-accesso-tramite-kiber-connect">3.4.1
+
                                 Accesso tramite Kiber Connect</a></li>
                             <li><a
                                 href="#342-accesso-tramite-microsoft-teams">3.4.2
+
                                 Accesso tramite Microsoft Teams</a></li>
                           </ul>
                         </li>
@@ -66,14 +74,17 @@ footer{font-size:12px;color:var(--muted);margin-top:40px;border-top:1px solid va
                     </li>
                     <li><a
                         href="#4-componenti-web-correlati-alle-due-modalita">4.
+
                         Componenti web correlati alle due modalità</a>
                       <ul>
                         <li><a
                             href="#41-kiber-care-portal-per-documed-e-continuita-documentale">4.1
+
                             Kiber Care Portal per DOCUMED e continuità
                             documentale</a></li>
                         <li><a
                             href="#42-kiber-connect-per-la-cooperazione-in-tempo-reale">4.2
+
                             Kiber Connect per la cooperazione in tempo
                             reale</a></li>
                       </ul>
@@ -85,8 +96,10 @@ footer{font-size:12px;color:var(--muted);margin-top:40px;border-top:1px solid va
                             DOCUMED</a></li>
                         <li><a
                             href="#52-flusso-collaborativo-con-kiber-connect">5.2
+
                             Flusso collaborativo con Kiber Connect</a></li>
                         <li><a href="#53-flusso-collaborativo-con-teams">5.3
+
                             Flusso collaborativo con Teams</a></li>
                       </ul>
                     </li>
@@ -100,72 +113,91 @@ footer{font-size:12px;color:var(--muted);margin-top:40px;border-top:1px solid va
                   <ul>
                     <li><a
                         href="#1-viene-prenotata-una-prestazione-da-svolgere-con-kiber">1.
+
                         Viene prenotata una prestazione da svolgere con
                         Kiber</a></li>
                     <li><a
 href="#2-il-backend-controlla-le-associazioni-e-prepara-la-sessione-kiber">2.
+
                         Il backend controlla le associazioni e prepara
                         la sessione Kiber</a></li>
                     <li><a
 href="#3-il-medico-trova-lappuntamento-in-irt-e-apre-kiber-connect-webapp">3.
+
                         Il medico trova l'appuntamento in IRT e apre
                         Kiber Connect Webapp</a></li>
                     <li><a
                         href="#4-il-medico-entra-nella-sessione-e-attende-il-paziente">4.
+
                         Il medico entra nella sessione e attende il
                         paziente</a></li>
                     <li><a
                         href="#5-il-paziente-accede-a-kiber-assistant-e-si-identifica">5.
+
                         Il paziente accede a Kiber Assistant e si
                         identifica</a></li>
                     <li><a
                         href="#6-il-paziente-seleziona-lappuntamento-ed-entra-nella-chiamata">6.
+
                         Il paziente seleziona l'appuntamento ed entra
                         nella chiamata</a></li>
                     <li><a
                         href="#7-la-videochiamata-si-svolge-e-kiber-raccoglie-i-dati">7.
+
                         La videochiamata si svolge e Kiber raccoglie i
                         dati</a></li>
                     <li><a
                         href="#8-il-paziente-esce-e-il-medico-conferma-il-risultato">8.
+
                         Il paziente esce e il medico conferma il
                         risultato</a></li>
                     <li><a
                         href="#9-il-backend-invia-i-dati-alla-irt-e-mostra-lesito">9.
+
                         Il backend invia i dati alla IRT e mostra
                         l'esito</a></li>
                   </ul>
                 </li>
                 <li><a href="#lista-operativa-operazioni-lato-kiber">Lista
+
                     operativa operazioni lato Kiber</a>
                   <ul>
                     <li><a
                         href="#1-preparare-lintegrazione-nei-client-kiber">1.
+
                         Preparare l'integrazione nei client Kiber</a></li>
                     <li><a
                         href="#2-ricevere-prenotazioni-modifiche-e-cancellazioni">2.
+
                         Ricevere prenotazioni, modifiche e cancellazioni</a></li>
                     <li><a
                         href="#3-controllare-le-associazioni-acs-e-preparare-la-sessione">3.
+
                         Controllare le associazioni ACS e preparare la
                         sessione</a></li>
                     <li><a
                         href="#4-aprire-kiber-connect-webapp-dal-pulsante-irt">4.
+
                         Aprire Kiber Connect Webapp dal pulsante IRT</a></li>
                     <li><a
 href="#5-identificare-il-paziente-e-alimentare-il-calendario-di-assistant">5.
+
                         Identificare il paziente e alimentare il
                         calendario di Assistant</a></li>
                     <li><a
                         href="#6-mantenere-sala-dattesa-e-ammissione-del-medico">6.
+
                         Mantenere sala d'attesa e ammissione del medico</a></li>
                     <li><a href="#7-raccogliere-i-dati-della-chiamata">7.
+
                         Raccogliere i dati della chiamata</a></li>
                     <li><a
                         href="#8-preparare-riepilogo-conferma-e-report-kiber">8.
+
                         Preparare riepilogo, conferma e report Kiber</a></li>
                     <li><a
                         href="#9-inviare-il-risultato-e-mostrare-il-suo-stato">9.
+
                         Inviare il risultato e mostrare il suo stato</a></li>
                     <li><a href="#10-collaudare-lintero-percorso">10.
                         Collaudare l'intero percorso</a></li>
@@ -176,69 +208,86 @@ href="#5-identificare-il-paziente-e-alimentare-il-calendario-di-assistant">5.
                   <ul>
                     <li><a
                         href="#1-il-percorso-proposto-e-utilizzabile-nella-nostra-integrazione">1.
+
                         Il percorso proposto è utilizzabile nella nostra
                         integrazione?</a></li>
                     <li><a
                         href="#2-come-viene-prenotata-e-assegnata-a-kiber-la-prestazione">2.
+
                         Come viene prenotata e assegnata a Kiber la
                         prestazione?</a></li>
                     <li><a
                         href="#3-possiamo-ricevere-i-messaggi-documentati-per-gli-appuntamenti">3.
+
                         Possiamo ricevere i messaggi documentati per gli
                         appuntamenti?</a></li>
                     <li><a
                         href="#4-quali-dati-riceviamo-per-preparare-sessione-e-calendario">4.
+
                         Quali dati riceviamo per preparare sessione e
                         calendario?</a></li>
                     <li><a
                         href="#5-dove-viene-presentato-il-pulsante-vai-alla-call">5.
+
                         Dove viene presentato il pulsante “Vai alla
                         call”?</a></li>
                     <li><a
                         href="#6-come-associamo-il-link-kiber-allappuntamento">6.
+
                         Come associamo il link Kiber all'appuntamento?</a></li>
                     <li><a
                         href="#7-come-riceviamo-la-verifica-dellaccesso-del-medico">7.
+
                         Come riceviamo la verifica dell'accesso del
                         medico?</a></li>
                     <li><a
                         href="#8-come-si-identifica-il-paziente-in-kiber-assistant">8.
+
                         Come si identifica il paziente in Kiber
                         Assistant?</a></li>
                     <li><a
                         href="#9-quali-regole-si-applicano-ad-anticipo-ritardi-e-assenze">9.
+
                         Quali regole si applicano ad anticipo, ritardi e
                         assenze?</a></li>
                     <li><a
                         href="#10-quali-dati-raccogliamo-e-come-calcoliamo-i-tempi">10.
+
                         Quali dati raccogliamo e come calcoliamo i
                         tempi?</a></li>
                     <li><a
                         href="#11-come-inviamo-il-report-kiber-e-leventuale-referto">11.
+
                         Come inviamo il report Kiber e l'eventuale
                         referto?</a></li>
                     <li><a
                         href="#12-quale-contratto-di-scambio-dobbiamo-implementare">12.
+
                         Quale contratto di scambio dobbiamo
                         implementare?</a></li>
                     <li><a
                         href="#13-come-ci-colleghiamo-ai-servizi-di-test-e-produzione">13.
+
                         Come ci colleghiamo ai servizi di test e
                         produzione?</a></li>
                     <li><a
                         href="#14-quando-il-risultato-e-acquisito-e-la-prestazione-e-chiusa">14.
+
                         Quando il risultato è acquisito e la prestazione
                         è chiusa?</a></li>
                     <li><a
                         href="#15-come-gestiamo-invii-incerti-errori-e-correzioni">15.
+
                         Come gestiamo invii incerti, errori e
                         correzioni?</a></li>
                     <li><a
                         href="#16-come-organizziamo-il-collaudo-e-il-passaggio-in-esercizio">16.
+
                         Come organizziamo il collaudo e il passaggio in
                         esercizio?</a></li>
                     <li><a
 href="#17-quale-componente-di-videochiamata-usa-irt-e-possiamo-integrarlo-nei-client-kiber">17.
+
                         Quale componente di videochiamata usa IRT e
                         possiamo integrarlo nei client Kiber?</a></li>
                   </ul>
@@ -284,14 +333,12 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABEYAAALZCAIAAAA1OrPuAAAgAElEQ
             paziente, oppure verso Kiber Connect/Teams, per la
             collaborazione remota.</p>
           <table>
-            <thead>
-              <tr>
+            <thead> <tr>
                 <th>Livello</th>
                 <th>Componente</th>
                 <th>Responsabilità primaria</th>
               </tr>
-            </thead>
-            <tbody>
+            </thead> <tbody>
               <tr>
                 <td>Campo</td>
                 <td>Kiber Assistant</td>
@@ -387,6 +434,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABKQAAAMgCAIAAACSxy3HAAAgAElEQ
             </li>
             <li>
               <p>Può essere utilizzata con Kiberscope, <b>aggiungendo </b>la
+
                 visuale POV, l’uso hands-free e i controlli vocali
                 previsti dalla configurazione.</p>
             </li>
@@ -526,6 +574,7 @@ src="https://kiber.tech/wp-content/uploads/2026/02/Background-Removed-1.png"
             Componenti web correlati alle due modalità</h3>
           <h4
             id="41-kiber-care-portal-per-documed-e-continuita-documentale">3.1
+
             Kiber Care Portal per DOCUMED e continuità documentale</h4>
           <p>Kiber Care Portal è l’interfaccia web orientata alla
             consultazione e alla gestione della documentazione per
@@ -569,6 +618,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaAAAAEZCAIAAABekWazAAAgAElEQ
             servizi Kiber, mentre il portale organizza l’accesso per
             paziente e per pool.</p>
           <h4 id="42-kiber-connect-per-la-cooperazione-in-tempo-reale">3.2
+
             Kiber Connect per la cooperazione in tempo reale</h4>
           <p>Kiber Connect è correlato alla modalità collaborativa di
             Kiber Assistant. Il suo ruolo non è soltanto mostrare una
@@ -735,15 +785,23 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
           della prestazione nella piattaforma.</p>
         <h2 id="il-flusso-di-lavoro">Il flusso di lavoro</h2>
         <p>I riferimenti qui sotto rimandano alle pagine della <strong>Guida
+
             di integrazione FHIR</strong> v0.1.8 (di seguito <strong>GUIDA
+
             FHIR</strong>) e, ove necessario, alla guida <strong>IRT -
             Integrazione con Cartella Clinica Elettronica esterna</strong>
           (di seguito <strong>GUIDA ICCE</strong>). “Copertura
           parziale” significa che la guida tratta l’argomento, ma non
           conferma tutto il passaggio proposto. “Non coperto” indica che
-          occorre un’altra specifica o una scelta Kiber. I link aprono
-          le pagine locali della guida o la GUIDA ICCE.</p>
+          occorre un’altra specifica o una scelta Kiber. <span
+            data-teams="true">L'integrazione applicativa sarà realizzata
+            preferibilmente mediante le API e i profili FHIR messi a
+            disposizione da IRT; qualora specifiche funzioni non
+            risultassero disponibili tramite FHIR, potranno essere
+            adottati ulteriori meccanismi di interoperabilità messi a
+            disposizione dalla piattaforma.</span></p>
         <h3 id="1-viene-prenotata-una-prestazione-da-svolgere-con-kiber">1.
+
           Viene prenotata una prestazione da svolgere con Kiber</h3>
         <p>La prenotazione identifica paziente, data e ora e viene
           assegnata a Kiber per l'erogazione. Il sistema responsabile —
@@ -758,36 +816,38 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
           questo caso trasporta le informazioni sul piano di lavoro e
           sulla prenotazione.</p>
         <table>
-          <thead>
-            <tr>
+          <thead> <tr>
               <th>Cosa succede</th>
               <th>Evento documentato</th>
               <th>Messaggio di esempio nella GUIDA FHIR</th>
             </tr>
-          </thead>
-          <tbody>
+          </thead> <tbody>
             <tr>
               <td>Nuova prenotazione</td>
               <td><code>SIU_INS</code></td>
               <td>Bundle
+
                   AMB inserimento piano di lavoro</td>
             </tr>
             <tr>
               <td>Modifica della prenotazione</td>
               <td><code>SIU_UPD</code></td>
               <td>Bundle
+
                   AMB variazione piano di lavoro</td>
             </tr>
             <tr>
               <td>Spostamento della data dell'appuntamento</td>
               <td><code>SIU_RPD</code></td>
               <td>Bundle
+
                   AMB spostamento piano di lavoro</td>
             </tr>
             <tr>
               <td>Cancellazione della prenotazione</td>
               <td><code>SIU_DEL</code></td>
               <td>Bundle
+
                   AMB cancellazione piano di lavoro</td>
             </tr>
           </tbody>
@@ -873,21 +933,26 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
         <p><strong>Collegamento con il passaggio successivo:</strong> al
           <a
             href="#5-il-paziente-accede-a-kiber-assistant-e-si-identifica">punto
+
             5 — Il paziente accede a Kiber Assistant e si identifica</a>,
           il paziente apre l'app, si identifica e consulta questa vista
           Calendario; al punto 6 seleziona l'appuntamento per entrare
           nella chiamata.</p>
         <p><strong>Riferimento alla documentazione:</strong> Specifiche
+
             → Integrazione CUP Regionale, argomenti prenotazione,
           modifica, spostamento e disdetta; Esempi
+
             → Integrazione CUP Regionale, esempi dei relativi piani
           di lavoro. Anche Specifiche
+
             → Integrazione Consuntivo Televisite descrive il CUP che
           assegna la televisita al sistema esterno. <strong>Copertura
             parziale:</strong> sono scenari di riferimento; resta da
           confermare quale flusso alimenterà Kiber in Lombardia.</p>
         <h3
           id="2-il-backend-controlla-le-associazioni-e-prepara-la-sessione-kiber">2.
+
           Il backend controlla le associazioni e prepara la sessione
           Kiber</h3>
         <p><strong>Questo passaggio è interno a Kiber.</strong> Usa i
@@ -953,6 +1018,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
         </ul>
         <h3
           id="3-il-medico-trova-lappuntamento-in-irt-e-apre-kiber-connect-webapp">3.
+
           Il medico trova l'appuntamento in IRT e apre Kiber Connect
           Webapp</h3>
         <p>Il medico accede alla IRT e trova la prestazione da svolgere
@@ -1044,6 +1110,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
           operativa per l'apertura di Kiber da IRT. Il meccanismo va
           concordato con i referenti IRT.</p>
         <h3 id="4-il-medico-entra-nella-sessione-e-attende-il-paziente">4.
+
           Il medico entra nella sessione e attende il paziente</h3>
         <p>Dopo aver premuto “Vai alla call” nel passaggio precedente,
           il medico entra nella sessione di Kiber Connect Webapp e si
@@ -1062,11 +1129,13 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
           dell'appuntamento si può entrare e come considerare il tempo
           di attesa rispetto alla durata della prestazione.</p>
         <p><strong>Riferimento alla documentazione:</strong> <strong>Non
+
             coperto dall’GUIDA FHIR:</strong> ingresso nella call ACS,
           sala d’attesa e ammissione del paziente. Queste funzioni sono
           da definire in Kiber. Le regole clinico-amministrative su
           quando inizia l’erogazione devono essere concordate con IRT.</p>
         <h3 id="5-il-paziente-accede-a-kiber-assistant-e-si-identifica">5.
+
           Il paziente accede a Kiber Assistant e si identifica</h3>
         <p>Nel caso di uso diretto, il paziente apre l'app e si
           identifica (con SPID o CIE? Sono ipotesi da confermare con
@@ -1123,8 +1192,10 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
           <li><strong>Associazione al paziente IRT:</strong> la GUIDA
             FHIR documenta gli identificativi e le operazioni
             anagrafiche in Specifiche
+
               → Integrazione Anagrafica Regionale, file <code>Home-Specifiche-Integrazione-Anagrafica-Regionale.html</code>,
             e il recupero e la traduzione degli identificativi in Specifiche
+
               → Modalità di recupero, file <code>Home-Specifiche-Modalità-di-recupero.html</code>.
             Resta da concordare quale identificativo verificato usare
             per collegare la persona autenticata al paziente della
@@ -1138,6 +1209,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
         </ul>
         <h3
           id="6-il-paziente-seleziona-lappuntamento-ed-entra-nella-chiamata">6.
+
           Il paziente seleziona l'appuntamento ed entra nella chiamata</h3>
         <p>Intorno all'orario previsto il paziente preme
           sull'appuntamento. Kiber verifica che possa partecipare e gli
@@ -1159,6 +1231,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
             aggiornato per verificare se il paziente può accedere alla
             sessione.</li>
           <li><strong>Mancata partecipazione:</strong> Specifiche
+
               → Integrazione CUP Regionale, file <code>Home-Specifiche-Integrazione-CUP-Regionale.html</code>,
             descrive anche gli scenari di prestazione non erogata e
             paziente non presentato. Resta da concordare con IRT quando
@@ -1171,6 +1244,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
             ritardi vanno concordati con IRT.</li>
         </ul>
         <h3 id="7-la-videochiamata-si-svolge-e-kiber-raccoglie-i-dati">7.
+
           La videochiamata si svolge e Kiber raccoglie i dati</h3>
         <p>Medico e paziente comunicano tramite Kiber e ACS. Kiber
           registra quando entrano ed escono, quando la chiamata inizia e
@@ -1186,9 +1260,11 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
         <ul>
           <li><strong>Dati della prestazione erogata:</strong> la GUIDA
             FHIR descrive il modello del consuntivo in Specifiche
+
               → Integrazione Consuntivo Televisite, file <code>Home-Specifiche-Integrazione-Consuntivo-Televisite.html</code>,
             con le risorse Patient, Encounter-AMB e ServiceRequest. I
             relativi esempi sono in Esempi
+
               → Integrazione Consuntivo Televisite, file <code>Home-Esempi-Integrazione-Consuntivo-Televisite.html</code>.
             Questi riferimenti servono a individuare i dati da
             raccogliere per il risultato da inviare; i campi richiesti
@@ -1229,14 +1305,17 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
           <li><strong>Dati conclusivi della prestazione:</strong> la
             GUIDA FHIR descrive la restituzione del dettaglio
             dell'erogazione in Specifiche
+
               → Integrazione Consuntivo Televisite, file <code>Home-Specifiche-Integrazione-Consuntivo-Televisite.html</code>,
             già richiamato al punto 7. Resta da concordare quali dati
             debba inserire o confermare il medico nel nostro caso.</li>
           <li><strong>Documenti associati alla prestazione:</strong> Specifiche
+
               → Integrazione Refertazione Esterna, file <code>Home-Specifiche-Integrazione-Refertazione-Esterna.html</code>,
             tratta il collegamento dei documenti alla prestazione e la
             gestione di validazione e firma. La modalità FHIR per
             trasmettere documenti è descritta in Paradigmi
+
               FHIR → Document, file <code>Home-FHIRParadigms-Document.html</code>,
             con le risorse DocumentManifest, DocumentReference e Binary.
             Sono riferimenti per concordare l'invio del report Kiber;
@@ -1258,6 +1337,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
           IRT o da correggere.</p>
         <p><strong>Esempio documentato da verificare per questo
             passaggio:</strong> la guida contiene Bundle
+
             AMB inserimento piano di lavoro (sistema esterno), con
           evento <code>SIU_INS_EROG</code> (“Inserimento erogazione
           prestazione/visita”). Il messaggio ha origine da un sistema
@@ -1265,7 +1345,16 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
           possibile riferimento per il ritorno del risultato dopo la
           chiamata, non per ricevere una nuova prenotazione. Va
           confermato con IRT se sia il messaggio da usare per il
-          consuntivo Kiber. Il file è <code>Home-Esempi-Integrazione-CUP-Regionale-Bundle-AMB-inserimento-piano-di-lavoro-sistema-esterno.html</code>.</p>
+          consuntivo Kiber. Il file è <code>Home-Esempi-Integrazione-CUP-Regionale-Bundle-AMB-inserimento-piano-di-lavoro-sistema-esterno.html</code>.<br>
+          <span data-teams="true">
+            <p>Qualora non sia possibile <strong>chiudere direttamente</strong>
+              una prestazione dall'interno di Kiber con messaggi verso
+              IRT, potrà essere concordato con IRT un percorso di chiusura del tipo:<br>
+            </p>
+            <p><code>Kiber → produce report/dati → medico torna in IRT →
+                chiude la prestazione</code></p>
+            <p>Kiber può quindi inviare il consuntivo direttamente a IRT oppure fornire al medico le informazioni necessarie per inserirlo nella piattaforma, secondo le modalità concordate. L’invio automatico del consuntivo non implica necessariamente la chiusura automatica della prestazione: anche dopo l’acquisizione dei dati potrebbe essere richiesta una conferma del medico in IRT.
+          </span></p>
         <p><strong>Da chiarire con IRT:</strong></p>
         <ul>
           <li><strong>Modalità di invio:</strong> dove e come dobbiamo
@@ -1294,6 +1383,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
           <li><strong>Invio dei messaggi e risposte:</strong> la GUIDA
             FHIR descrive i Bundle di messaggio, l'operazione <code>$process-message</code>,
             i messaggi di risposta e gli errori OperationOutcome in Paradigmi
+
               FHIR → Messaging, file <code>Home-FHIRParadigms-Messaging.html</code>.
             IRT deve confermare se questa modalità si applica al
             risultato Kiber, l'indirizzo del servizio e il significato
@@ -1357,6 +1447,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
           cancellazioni aggiornano correttamente sessione e calendario.</p>
         <h3
           id="3-controllare-le-associazioni-acs-e-preparare-la-sessione">3.
+
           Controllare le associazioni ACS e preparare la sessione</h3>
         <ul>
           <li>Per medico e paziente, cercare l'associazione già salvata
@@ -1396,6 +1487,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
           un'apertura non valida viene rifiutata.</p>
         <h3
           id="5-identificare-il-paziente-e-alimentare-il-calendario-di-assistant">5.
+
           Identificare il paziente e alimentare il calendario di
           Assistant</h3>
         <ul>
@@ -1517,6 +1609,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
           l'eventuale report allegato a IRT.</p>
         <h3
           id="1-il-percorso-proposto-e-utilizzabile-nella-nostra-integrazione">1.
+
           Il percorso proposto è utilizzabile nella nostra integrazione?</h3>
         <ul>
           <li>Possiamo svolgere la videochiamata con Kiber/ACS e
@@ -1527,6 +1620,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
         </ul>
         <h3
           id="2-come-viene-prenotata-e-assegnata-a-kiber-la-prestazione">2.
+
           Come viene prenotata e assegnata a Kiber la prestazione?</h3>
         <ul>
           <li>Il medico crea la prenotazione direttamente in IRT oppure
@@ -1537,6 +1631,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
         </ul>
         <h3
           id="3-possiamo-ricevere-i-messaggi-documentati-per-gli-appuntamenti">3.
+
           Possiamo ricevere i messaggi documentati per gli appuntamenti?</h3>
         <ul>
           <li>Gli eventi <code>SIU_INS</code>, <code>SIU_UPD</code>, <code>SIU_RPD</code>
@@ -1557,6 +1652,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
         </ul>
         <h3
           id="4-quali-dati-riceviamo-per-preparare-sessione-e-calendario">4.
+
           Quali dati riceviamo per preparare sessione e calendario?</h3>
         <ul>
           <li>Possiamo ricevere nello stesso flusso gli identificativi
@@ -1616,6 +1712,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
             fino ai dati conclusivi e all'eventuale referto? Sono
             disponibili entrambe per la nostra integrazione?</li>
           <li>Nella teleassistenza è previsto o possibile che un <strong>caregiver
+
               gestisca la chiamata accanto al paziente</strong>, usando
             Kiber Assistant? È previsto che il paziente effettui
             personalmente il login e poi passi smartphone e visore al
@@ -1642,6 +1739,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
         </ul>
         <h3
           id="9-quali-regole-si-applicano-ad-anticipo-ritardi-e-assenze">9.
+
           Quali regole si applicano ad anticipo, ritardi e assenze?</h3>
         <ul>
           <li>Quanto prima dell'orario previsto possono accedere medico
@@ -1664,6 +1762,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
             aggiornamenti durante la chiamata?</li>
         </ul>
         <h3 id="11-come-inviamo-il-report-kiber-e-leventuale-referto">11.
+
           Come inviamo il report Kiber e l'eventuale referto?</h3>
         <ul>
           <li>È richiesto un referto? Chi lo redige, valida, firma e
@@ -1692,6 +1791,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
             necessarie per questo percorso?</li>
         </ul>
         <h3 id="13-come-ci-colleghiamo-ai-servizi-di-test-e-produzione">13.
+
           Come ci colleghiamo ai servizi di test e produzione?</h3>
         <ul>
           <li>Quali indirizzi, credenziali, modalità di autenticazione e
@@ -1702,6 +1802,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
         </ul>
         <h3
           id="14-quando-il-risultato-e-acquisito-e-la-prestazione-e-chiusa">14.
+
           Quando il risultato è acquisito e la prestazione è chiusa?</h3>
         <ul>
           <li>La risposta all'invio conferma la ricezione del messaggio
@@ -1723,6 +1824,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
         </ul>
         <h3
           id="16-come-organizziamo-il-collaudo-e-il-passaggio-in-esercizio">16.
+
           Come organizziamo il collaudo e il passaggio in esercizio?</h3>
         <ul>
           <li>Potete fornire utenti e appuntamenti di test e un
@@ -1735,6 +1837,7 @@ src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAw4AAAIRCAIAAABs133gAAAgAElEQ
         </ul>
         <h3
 id="17-quale-componente-di-videochiamata-usa-irt-e-possiamo-integrarlo-nei-client-kiber">17.
+
           Quale componente di videochiamata usa IRT e possiamo
           integrarlo nei client Kiber?</h3>
         <ul>
@@ -1761,7 +1864,64 @@ id="17-quale-componente-di-videochiamata-usa-irt-e-possiamo-integrarlo-nei-clien
             immagine e annotazioni aggiornate in tempo reale,
             eventualmente come contenuto condiviso distinto dalla
             videocamera? Quali permessi e limiti si applicano e possiamo
-            fare una prova fra Web e Android?</li>
+            fare una prova fra Web e Android?<br>
+          </li>
+        </ul>
+        <h2 id="alternative-di-integrazione">Nota importante<br>
+        </h2>
+        <p><span data-teams="true">
+            <blockquote>
+              <p><strong>L'architettura proposta adotta un approccio
+                  progressivo e disaccoppiato. Le modalità descritte
+                  rappresentano il livello di integrazione
+                  preferenziale; qualora alcune funzionalità della
+                  piattaforma IRT non fossero esposte o disponibili nei
+                  tempi di progetto, potranno essere concordati con IRT meccanismi alternativi che consentano di completare il percorso clinico, rendendo espliciti gli eventuali passaggi manuali e mantenendo la possibilità di una successiva integrazione più profonda.</strong></p>
+            </blockquote>
+            <p>Ad esempio:<br>
+            </p>
+            <span>
+              <table>
+                <thead><tr>
+                    <th>Funzione</th>
+                    <th>Preferenziale</th>
+                    <th>Alternativa o evoluzione da concordare con IRT</th>
+                  </tr>
+                </thead><tbody>
+                  <tr>
+                    <td>Prenotazione</td>
+                    <td>evento FHIR push</td>
+                    <td>polling/API/manuale</td>
+                  </tr>
+                  <tr>
+                    <td>Medico</td>
+                    <td>SSO IRT→Kiber</td>
+                    <td>deep-link + login</td>
+                  </tr>
+                  <tr>
+                    <td>Paziente</td>
+                    <td>Identità federata / SPID / CIE, secondo le modalità confermate da IRT</td>
+                    <td>Accesso del paziente oppure del caregiver con proprie credenziali, secondo le autorizzazioni concordate. Eventuali OTP o codici per entrare nella sessione non sostituiscono la verifica dell’identità.</td>
+                  </tr>
+                  <tr>
+                    <td>Video</td>
+                    <td>ACS</td>
+                    <td>Possibile seconda fase: componente video IRT, previa verifica della disponibilità e compatibilità con Kiber.</td>
+                  </tr>
+                  <tr>
+                    <td>Consuntivo</td>
+                    <td>FHIR automatico</td>
+                    <td>Inserimento manuale del consuntivo in IRT, se necessario. La chiusura della prestazione può richiedere una conferma distinta anche quando i dati sono inviati automaticamente.</td>
+                  </tr>
+                  <tr>
+                    <td>Report</td>
+                    <td>allegato FHIR</td>
+                    <td>Link o repository Kiber per la consultazione, se accettati da IRT; da confermare se il documento debba anche essere acquisito dalla piattaforma.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </span></span></p>
+        <ul>
         </ul>
         <footer>Proposta tecnica · 7 ottobre 2026 · Fonte:
           workflow-pubblico-e-attivita.md</footer>
